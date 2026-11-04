@@ -7,11 +7,12 @@ PORT = 65432  # Port number (you can change this)
 stats = [["ECHO", 0], ["GET", 0], ["STATS", 0]] # Keeping track of how many times different methods have been called
 
 def handle_request(request):
-    # Split the request line into method and parameter, unless the request is for stats
+    # Split the request line into method and parameter, unless the request is for stats in which case there is only the method
     parts = request.strip().split(' ', 1)
     if len(parts) < 2 and request != "STATS":
         return "ERROR: Invalid request format"
 
+    # If the request is for stats only the method is needed
     if len(parts) == 1: method = parts[0]
     else: method, parameter = parts[0], parts[1]
     
