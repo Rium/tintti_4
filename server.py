@@ -8,7 +8,7 @@ stats = [["ECHO", 0], ["GET", 0], ["STATS", 0]] # Keeping track of how many time
 
 def handle_request(request):
     # Split the request line into method and parameter, unless the request is for stats in which case there is only the method
-    parts = request.strip().split(' ', 1)
+    parts = request.rstrip().split(' ', 1)
     if len(parts) < 2 and request != "STATS":
         return "ERROR: Invalid request format"
 
@@ -34,6 +34,7 @@ def handle_request(request):
         return "ERROR: File not found"
     # Handle the "STATS" method
     elif method == "STATS":
+        if len(parts) != 1: return "ERROR: parameter given where none is required"
         stats[2][1] += 1
         return_stats = ""
         for i in stats:
