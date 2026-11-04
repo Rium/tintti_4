@@ -18,7 +18,7 @@ print(f"Server response: {response}")
 # Example for the GET request
 request = "GET testfile.txt"
 response = send_request(request)
-if response: print(f"Contents of the file:\n{response}")
+print(f"Contents of the file:\n{response}")
 # Example for the STATS request
 request = "STATS"
 print(send_request(request))
@@ -26,7 +26,7 @@ print(send_request(request))
 # Example for the 2nd question
 request = "GET security_test/passwd.txt"
 response = send_request(request)
-if response: print(response)
+print(response)
 # Examples for the 3rd question
 request = "TEST"
 response = send_request(request)
